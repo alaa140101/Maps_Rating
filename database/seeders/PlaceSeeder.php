@@ -46,7 +46,7 @@ class PlaceSeeder extends Seeder
         $place->name="مستشفى مكة";
         $place->slug="مستشفى مكة";
         $place->image="1.jpeg";
-        $place->category_id=2;
+        $place->category_id=5;
         $place->overview="مساحة البشري";
         $place->address="الطريق الدائري الثالث حي كدي";
         $place->user_id=3;

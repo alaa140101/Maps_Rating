@@ -18,7 +18,9 @@
   <div class="category mt-5">
     <ul>
       @foreach ($categories as $category)
-      <li><a href="" class="bg-blue-900 hover:bg-gray-400">{{ $category->title }}</a></li>
+      <li>
+        <a href="{{ route('category.show', $category->slug) }}" class="bg-blue-900 hover:bg-gray-400">{{ $category->title }}</a>
+      </li>
       @endforeach
     </ul>
   </div>
