@@ -9,8 +9,17 @@
         <option value="">حدد التصنيف</option>
       </select>
     </div>
-    <div class="mr-8">
+    <div class="mr-5">
       <button class="py-2 px-6 bg-gray-500 hover:bg-gray-400 text-white mr-5 rounded-md" type="submit">بحث</button>
     </div>
   </div>
 </form>
+<section class="m-auto text-center">
+  <div class="category mt-5">
+    <ul>
+      @foreach ($categories as $category)
+      <li><a href="" class="bg-blue-900 hover:bg-gray-400">{{ $category->title }}</a></li>
+      @endforeach
+    </ul>
+  </div>
+</section>
