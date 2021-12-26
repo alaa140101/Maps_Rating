@@ -19,7 +19,7 @@ class PlaceSeeder extends Seeder
         $place  = new Place();
         $place->name="سوق مكة";
         $place->slug="سوق مكة";
-        $place->image="1.jpeg";
+        $place->image="1.jpg";
         $place->category_id=3;
         $place->overview="مساحة تعبئة زمزم";
         $place->address="الطريق الدائري الثالث حي كدي";
@@ -32,7 +32,7 @@ class PlaceSeeder extends Seeder
         $place  = new Place();
         $place->name="مطعم مكة";
         $place->slug="مطعم مكة";
-        $place->image="1.jpeg";
+        $place->image="2.jpg";
         $place->category_id=2;
         $place->overview="بخاري مشاوي";
         $place->address="الطريق الدائري الثالث حي كدي";
@@ -45,7 +45,7 @@ class PlaceSeeder extends Seeder
         $place  = new Place();
         $place->name="مستشفى مكة";
         $place->slug="مستشفى مكة";
-        $place->image="1.jpeg";
+        $place->image="3.jpg";
         $place->category_id=5;
         $place->overview="مساحة البشري";
         $place->address="الطريق الدائري الثالث حي كدي";
