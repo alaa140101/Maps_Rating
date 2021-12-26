@@ -14,7 +14,7 @@ class PlaceController extends Controller
      */
     public function index()
     {
-        //
+        return view('welcome', ['places'=> Place::orderBy('view_count', 'desc')->take(3)->get()]);
     }
 
     /**
