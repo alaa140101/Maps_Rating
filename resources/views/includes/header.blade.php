@@ -3,6 +3,7 @@
   <div class="flex flex-row p-5">
     <div class="w-6/12">
       <input type="text" name="address" id="address" class="p-2 w-full bg-gray-200 rounded-md" autocomplete="off" placeholder="العنوان">
+      <div id="address-list"></div>
     </div>
     <div class="w-6/12">
       <select name="category" id="" class="p-2 mr-5 bg-gray-200 w-full rounded-md">

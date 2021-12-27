@@ -18,7 +18,7 @@
         @livewireStyles
 
         <!-- Scripts -->
-        <script src="{{ mix('js/app.js') }}" defer></script>
+        {{-- <script src="{{ mix('js/app.js') }}" defer></script> --}}
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     </head>
     <body class="font-sans antialiased">
@@ -59,8 +59,12 @@
                     }).done(function(data){
                         $('#address-list').html(data);
                     });
+                });
+                $('#address-list').on('click', 'li', function() {
+                    $('#address').val($(this).text());
+                    $('#address-list').fadeOut();
                 })
-            })
+            });
         </script>
     </body>
 </html>
