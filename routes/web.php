@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PlaceController;
+use App\Http\Controllers\SearchController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,7 +25,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-Route::get('/search', [SearchController::class, 'auto-complete'])->name('auto-complete');
+Route::get('/search', [SearchController::class, 'autoComplete'])->name('auto-complete');
 
 Route::get('/{category:slug}', [CategoryController::class, 'show'])->name('category.show');
 

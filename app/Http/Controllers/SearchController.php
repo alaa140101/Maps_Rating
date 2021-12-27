@@ -11,7 +11,7 @@ class SearchController extends Controller
     {
         if ($request->address) {
             $input = $request->address;
-            $data = Place::where('address', 'LIKE', "%$input")->get();
+            $data = Place::where('address', 'LIKE', "%$input%")->get();
             $output = '<ul class="list-group">';
             foreach ($data as $row) {
                 $output .= '<li class="flex items-center justify-between my-4">'.$row->address.'</li>';
