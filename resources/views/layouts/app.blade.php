@@ -19,6 +19,7 @@
 
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     </head>
     <body class="font-sans antialiased">
         <x-jet-banner />
@@ -44,5 +45,22 @@
         @stack('modals')
 
         @livewireScripts
+
+        <script>
+            $(function(){
+                $('#address').on('keyup', function(){
+                    var address = $(this).val();
+                    $('#address-list').fadeIn();
+
+                    $.ajax({
+                        url: "{{ route('auto-complete') }}",
+                        type: "GET",
+                        data: {"address": address } 
+                    }).done(function(data){
+                        $('#address-list').html(data);
+                    });
+                })
+            })
+        </script>
     </body>
 </html>
