@@ -32,3 +32,5 @@ Route::post('/search', [SearchController::class, 'show'])->name('search');
 Route::get('/{category:slug}', [CategoryController::class, 'show'])->name('category.show');
 
 Route::get('/', [PlaceController::class, 'index'])->name('home');
+
+Route::get('/{place}/{slug}', [PlaceController::class, 'show'])->name('place.show');

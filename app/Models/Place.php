@@ -26,4 +26,9 @@ class Place extends Model
 
         return $query;
     }
+
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
 }

@@ -12,7 +12,9 @@
           @foreach ($places as $place)
             <div class="flex mb-5 bg-white">
               <div class="flex-none w-48 relative">
-                <img src="{{ $place->image }}" alt="" class="absolute inset-0 w-full h-full object-cover">
+                <a href="{{ route('place.show', [$place->id, $place->slug]) }}">
+                  <img src="{{ $place->image }}" alt="" class="absolute inset-0 w-full h-full object-cover">
+                </a>
               </div>
               <div class="flex-auto p-6">
                 <div class="flex flex-wrap">
