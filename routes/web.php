@@ -1,10 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\PlaceController;
-use App\Http\Controllers\SearchController;
-
+use App\Http\Controllers\{
+    CategoryController,
+    PlaceController,
+    SearchController,
+    };
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,6 +27,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 Route::get('/search', [SearchController::class, 'autoComplete'])->name('auto-complete');
+Route::post('/search', [SearchController::class, 'show'])->name('search');
 
 Route::get('/{category:slug}', [CategoryController::class, 'show'])->name('category.show');
 
