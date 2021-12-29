@@ -47,7 +47,7 @@
 
           <div class="bg-white col-span-2 shadow-lg rounded p-5 grid grid-cols-1 lg:grid-cols-3">
               <div class="text-center v_line">
-                  <h1></h1>
+                  <h1>{{ round($total,1) }}</h1>
                   <div class="rating">
                       <h3>
                           
@@ -62,28 +62,28 @@
                       <span class=""></span>الخدمة
                   </div>
                   <div class="text-right">
-                      <progress value="" class="w-full" max="5" title=""></progress>
+                      <progress value="{{$service_rating}}" class="w-full" max="5" title=""></progress>
                   </div>
 
                   <div class="text-right">
                       <span class=""></span>الجودة
                   </div>
                   <div class="text-right">
-                      <progress value="" class="w-full" max="5" title=""></progress>
+                      <progress value="{{$quality_rating}}" class="w-full" max="5" title=""></progress>
                   </div>
 
                   <div class="text-right">
                       <span class=""></span>النظافة
                   </div>
                   <div class="text-right">
-                      <progress value="" class="w-full" max="5" title=""></progress>
+                      <progress value="{{$cleanliness_rating}}" class="w-full" max="5" title=""></progress>
                   </div>
 
                   <div class="text-right">
                       <span class=""></span>السعر
                   </div>
                   <div class="text-right">
-                      <progress value="" class="w-full" max="5" title=""></progress>
+                      <progress value="{{$pricing_rating}}" class="w-full" max="5" title=""></progress>
                   </div>
                   <!-- end 1 -->
               </div>

@@ -31,4 +31,9 @@ class Place extends Model
     {
         return $this->belongsTo('App\Models\User');
     }
+
+    public function reviews()
+    {
+        return $this->hasMany('App\Models\Review');
+    }
 }

@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Place;
 use Illuminate\Http\Request;
+use App\Traits\RateableTrait;
 
 class PlaceController extends Controller
 {
+    use RateableTrait;
     /**
      * Display a listing of the resource.
      *
@@ -46,7 +48,14 @@ class PlaceController extends Controller
      */
     public function show(Place $place)
     {
-        return view('details', compact('place'));
+        $avg = $this->averageRating($place);
+
+        $total= $avg['total'];
+          $service_rating=$avg['service_rating'];
+          $quality_rating=$avg['quality_rating'];
+          $cleanliness_rating=$avg['cleanliness_rating'];
+          $pricing_rating=$avg['pricing_rating'];
+        return view('details', compact('place', 'total', 'service_rating', 'quality_rating', 'cleanliness_rating', 'pricing_rating'));
     }
 
     /**
