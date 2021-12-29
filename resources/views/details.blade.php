@@ -54,7 +54,7 @@
                       </h3>
                   </div>
                   <div>
-                      <span>عدد التقييمات</span> 
+                      <span>عدد التقييمات</span> {{ $place->reviews_count }}
                   </div>
               </div>
               <div class="mr-2 col-span-2">
@@ -62,28 +62,28 @@
                       <span class=""></span>الخدمة
                   </div>
                   <div class="text-right">
-                      <progress value="{{$service_rating}}" class="w-full" max="5" title=""></progress>
+                      <progress value="{{$service_rating}}" class="w-full" max="5" title="{{ round($service_rating,1) }}"></progress>
                   </div>
 
                   <div class="text-right">
                       <span class=""></span>الجودة
                   </div>
                   <div class="text-right">
-                      <progress value="{{$quality_rating}}" class="w-full" max="5" title=""></progress>
+                      <progress value="{{$quality_rating}}" class="w-full" max="5" title="{{ round($quality_rating,1) }}"></progress>
                   </div>
 
                   <div class="text-right">
                       <span class=""></span>النظافة
                   </div>
                   <div class="text-right">
-                      <progress value="{{$cleanliness_rating}}" class="w-full" max="5" title=""></progress>
+                      <progress value="{{$cleanliness_rating}}" class="w-full" max="5" title="{{ round($cleanliness_rating,1) }}"></progress>
                   </div>
 
                   <div class="text-right">
                       <span class=""></span>السعر
                   </div>
                   <div class="text-right">
-                      <progress value="{{$pricing_rating}}" class="w-full" max="5" title=""></progress>
+                      <progress value="{{$pricing_rating}}" class="w-full" max="5" title="{{ round($pricing_rating,1) }}"></progress>
                   </div>
                   <!-- end 1 -->
               </div>
