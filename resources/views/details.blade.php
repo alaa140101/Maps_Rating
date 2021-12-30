@@ -99,20 +99,21 @@
           </div>
 
           <div class="bg-white col-span-2 shadow-lg rounded p-5">
+              @foreach ($place->reviews as $review)
               <div class="row text-right bg-white p-4 shadow-sm">
                   <div class="review-block ">
                       <div class="grid grid-cols-3 p-5">
                           <div class="text-sm">
                               <img src="http://dummyimage.com/60x60/666/ffffff&text=No+Image" class="img-rounded">
-                              <div class="text-blue-400"><a href="#"></a></div>
-                              <div class="review-block-date"></div>
+                              <div class="text-blue-400"><a href="#">{{ $review->user->name }}</a></div>
+                              <div class="review-block-date">{{ $review->created_at->diffForHumans() }}</div>
                           </div>
                           <div class="col-span-2">
                               <div class="rating"> 
                               
                               
                               </div>
-                              <div class="review-block-description "></div>
+                              <div class="review-block-description ">{{ $review->review }}</div>
 
                               <div class="mt-3">
                                                               
@@ -122,6 +123,7 @@
                   </div>
                   <hr/>
               </div>
+              @endforeach
           </div>
 
           <div  id="review-div" class="bg-white col-span-2 shadow-lg rounded p-5">
