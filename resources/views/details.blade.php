@@ -54,7 +54,7 @@
                             @if ($i <= $total)
                                 <span class="fa fa-star" aria-hidden="true"></span>
                             @elseif($i == round($total))
-                                <span class="fa fa-star-half" aria-hidden="true"></span>
+                                <span class="fa fa-star-half-o fa-flip-horizontal" aria-hidden="true"></span>
                             @else 
                                 <span class="fa fa-star-o" aria-hidden="true"></span>
                             @endif 
@@ -109,14 +109,19 @@
                               <div class="review-block-date">{{ $review->created_at->diffForHumans() }}</div>
                           </div>
                           <div class="col-span-2">
-                              <div class="rating"> 
-                              
-                              
+                              <div class="rating">
+                                @for ($i = 1; $i < 5; $i++)
+                                    @if($i <= $review->avgRating())
+                                    <span class="fa fa-star" aria-hidden="true"></span>
+                                    @elseif($i == round($review->avgRating()))
+                                    <span class="fa fa-star-half-o fa-flip-horizontal" aria-hidden="true"></span>
+                                    <span class="fa fa-star-o" aria-hidden="true"></span>
+                                    @endif
+                                @endfor
                               </div>
                               <div class="review-block-description ">{{ $review->review }}</div>
 
                               <div class="mt-3">
-                                                              
                               </div>                               
                           </div>
                       </div>

@@ -13,4 +13,9 @@ class Review extends Model
     {
         return $this->belongsTo('App\Models\User');
     }
+
+    public function avgRating()
+    {
+        return ($this->service_rating+$this->cleanliness_rating+$this->quality_rating+$this->pricing_rating) /4;
+    }
 }
