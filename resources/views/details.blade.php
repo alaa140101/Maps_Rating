@@ -132,9 +132,18 @@
           </div>
 
           <div  id="review-div" class="bg-white col-span-2 shadow-lg rounded p-5">
+              @if (session('success'))
+              <div class="bg-teal-200 relative text-blue-600 py-3 px-3 rounded-lg">
+                  {{ Session('success')}}
+              </div>
+              @elseif(session('fail'))
+              <div class="bg-red-200 relative text-red-600 py-3 px-3 rounded-lg">
+                {{ Session('fail')}}
+                </div>                  
+              @endif
               <h3 class="mb-4 mt-3">أضف مراجعة</h3>
               <hr/>
-              <form class="form-contact" action="{{-- {{ route('review.store') }} --}}" method="post">
+              <form class="form-contact" action="{{ route('review.store') }}" method="post">
                   @csrf
                   <div class="grid grid-cols-2 mt-5">
                       <div class="">
@@ -180,8 +189,13 @@
                           </div>
                       </div>
                   </div>
-
-              
+                  <div class="mt-4">
+                    <div class="form-group">
+                        <textarea name="review" id="review" cols="30" rows="10" class="border w-full"></textarea>
+                    </div>
+                    <input type="hidden" name="place_id" class="form-control" id="place_id" value="{{ $place->id }}">
+                    <button type="submit" class="mt-3 bg-blue-600 text-gray-200 rounded hover:bg-blue-500 px-4 py-2 focus:outline-none">إرسال</button>
+                </div>              
               </form>
           </div>
       </div>

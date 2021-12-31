@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
     CategoryController,
     PlaceController,
+    ReviewController,
     SearchController,
     };
 /*
@@ -34,3 +35,5 @@ Route::get('/{category:slug}', [CategoryController::class, 'show'])->name('categ
 Route::get('/', [PlaceController::class, 'index'])->name('home');
 
 Route::get('/{place}/{slug}', [PlaceController::class, 'show'])->name('place.show');
+
+Route::post('review', [ReviewController::class, 'store'])->name('review.store');

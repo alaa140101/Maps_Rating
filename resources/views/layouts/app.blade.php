@@ -9,33 +9,32 @@
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+        <!-- Font Awesome -->
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
         <!-- Styles -->
-        <link rel="stylesheet" href="{{ mix('css/app.css') }}">
         <link rel="stylesheet" href="{{ asset('css/style.css') }}" >
-
+        <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+        {{-- <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="" crossorigin=""/> --}}
 
         @livewireStyles
 
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	{{-- <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.js" defer></script> --}}
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     </head>
-    <body class="font-sans antialiased">
-        <x-jet-banner />
-
+    <body class="antialiased">
         <div class="min-h-screen bg-gray-100">
-            @livewire('navigation-menu')
+            @livewire('navigation-menu')  
 
             <!-- Page Heading -->
-            @if (isset($header))
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endif
+            <header class="bg-white shadow">
+                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                    {{ $header }}
+                </div>
+            </header>
 
             <!-- Page Content -->
             <main>
@@ -43,29 +42,36 @@
             </main>
         </div>
 
+        <footer class="flex justify-center p-5 ">
+            <a href="https://academy.hsoub.com" class="justify-self-center">
+                <img class="w-24"  src="https://academy.hsoub.com/uploads/monthly_2016_01/SiteLogo-346x108.png.dd3bdd5dfa0e4a7099ebc51f8484032e.png" alt="أكاديمية حسوب">
+            </a>
+        </footer>
+
+
         @stack('modals')
 
         @livewireScripts
 
         <script>
             $(function(){
-                $('#address').on('keyup', function(){
+                $('#address').on('keyup', function() {
                     var address = $(this).val();
-                    $('#address-list').fadeIn();
-
+                    $('#address-list').fadeIn(); 
                     $.ajax({
                         url: "{{ route('auto-complete') }}",
                         type: "GET",
-                        data: {"address": address } 
-                    }).done(function(data){
-                        $('#address-list').html(data);
+                        data: {"address" : address }
+                    }).done(function(data) {
+                        $("#address-list").html(data);
                     });
                 });
-                $('#address-list').on('click', 'li', function() {
-                    $('#address').val($(this).text());
-                    $('#address-list').fadeOut();
-                })
+                $('#address-list').on('click', 'li', function(){  
+                    $('#address').val($(this).text());  
+                    $('#address-list').fadeOut();  
+                }); 
             });
         </script>
+
     </body>
 </html>
