@@ -4,19 +4,17 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class Alert extends Component
+class Rate extends Component
 {
-    public $color;
-    public $message;
+    public $totalRatings;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($color, $message)
+    public function __construct( $totalRatings)
     {
-        $this->color = $color;
-        $this->message = $message;
+        $this->totalRatings = $totalRatings;
     }
 
     /**
@@ -26,6 +24,6 @@ class Alert extends Component
      */
     public function render()
     {
-        return view('components.alert');
+        return view('components.rate');
     }
 }

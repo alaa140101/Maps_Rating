@@ -50,15 +50,7 @@
                   <h1>{{ round($total,1) }}</h1>
                   <div class="rating">
                       <h3>
-                         @for ($i = 1; $i <= 5; $i++)
-                            @if ($i <= $total)
-                                <span class="fa fa-star" aria-hidden="true"></span>
-                            @elseif($i == round($total))
-                                <span class="fa fa-star-half-o fa-flip-horizontal" aria-hidden="true"></span>
-                            @else 
-                                <span class="fa fa-star-o" aria-hidden="true"></span>
-                            @endif 
-                         @endfor 
+                        <x-rate totalRatings="{{ $total }}" />
                       </h3>
                   </div>
                   <div>
@@ -110,14 +102,7 @@
                           </div>
                           <div class="col-span-2">
                               <div class="rating">
-                                @for ($i = 1; $i < 5; $i++)
-                                    @if($i <= $review->avgRating())
-                                    <span class="fa fa-star" aria-hidden="true"></span>
-                                    @elseif($i == round($review->avgRating()))
-                                    <span class="fa fa-star-half-o fa-flip-horizontal" aria-hidden="true"></span>
-                                    <span class="fa fa-star-o" aria-hidden="true"></span>
-                                    @endif
-                                @endfor
+                                <x-rate totalRatings="{{ $review->avgRating() }}" />
                               </div>
                               <div class="review-block-description ">{{ $review->review }}</div>
 
@@ -133,13 +118,9 @@
 
           <div  id="review-div" class="bg-white col-span-2 shadow-lg rounded p-5">
               @if (session('success'))
-              <div class="bg-teal-200 relative text-blue-600 py-3 px-3 rounded-lg">
-                  {{ Session('success')}}
-              </div>
+                <x-alert color="blue" message="{{ session('success') }}"/>
               @elseif(session('fail'))
-              <div class="bg-red-200 relative text-red-600 py-3 px-3 rounded-lg">
-                {{ Session('fail')}}
-                </div>                  
+                <x-alert color="red" message="{{ session('fail') }}"/>
               @endif
               <h3 class="mb-4 mt-3">أضف مراجعة</h3>
               <hr/>
