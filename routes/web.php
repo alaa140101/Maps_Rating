@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
     CategoryController,
+    ContactController,
     PlaceController,
     ReviewController,
     SearchController,
@@ -31,6 +32,8 @@ Route::get('/search', [SearchController::class, 'autoComplete'])->name('auto-com
 Route::post('/search', [SearchController::class, 'show'])->name('search');
 
 Route::get('/{category:slug}', [CategoryController::class, 'show'])->name('category.show');
+
+Route::resource('report', ContactController::class, ['only' => ['create', 'store']]);
 
 Route::get('/', [PlaceController::class, 'index'])->name('home');
 
