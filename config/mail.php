@@ -96,6 +96,11 @@ return [
         'name' => env('MAIL_FROM_NAME', 'Example'),
     ],
 
+    'to' => [
+        'address' => 'admin@maps.com',
+        'name' => 'admin'
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Markdown Mail Settings

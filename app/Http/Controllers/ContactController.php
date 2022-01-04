@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\SendReport;
 use App\Models\Report;
 use Illuminate\Http\Request;
 
@@ -16,5 +17,7 @@ class ContactController extends Controller
     {
         $data = $request->all();
         Report::create($data);
+        \Mail::send(new SendReport($data));
+        return back()->with('success', 'اشكر على تواصلك');
     }
 }

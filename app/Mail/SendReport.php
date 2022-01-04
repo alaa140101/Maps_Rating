@@ -11,14 +11,15 @@ class SendReport extends Mailable
 {
     use Queueable, SerializesModels;
 
+    protected $data;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($data)
     {
-        //
+        $this->data = $data;
     }
 
     /**
@@ -28,6 +29,9 @@ class SendReport extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.template');
+        return $this->from($this->data['email'])
+        ->to(config('mail.to.address','mail.to.name'))
+        ->subject('إبلاغ عن موقع مكرر')
+        ->markdown('emails.template')->with('data', $this->data);
     }
 }

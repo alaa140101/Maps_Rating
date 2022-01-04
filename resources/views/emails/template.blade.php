@@ -1,7 +1,8 @@
 @component('mail::message')
-# Introduction
-
-The body of your message.
+<h2>مرحبا</h2>
+{{$data['name']}} : المستخدم
+<br>
+{{$data['place_url']}} : ابلغ عن الرابط
 
 @component('mail::button', ['url' => ''])
 Button Text
