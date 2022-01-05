@@ -107,6 +107,14 @@
                               <div class="review-block-description ">{{ $review->review }}</div>
 
                               <div class="mt-3">
+                                @auth
+                                <button id="like" data-id="{{$review->id}}" class="border rounded p-1 text-xs like" type="button">
+                                    {{!! Auth::user()->alreadyliked($review->id) ? '<i class="fa fa-thumbs-down"></i><small>إلغاء الإعجاب</small> ' : '<i class="fa fa-thumbs-up"></i><small>أعجبني</small> ' !!}}
+                                    <span>{{ $review->likes_count }}</span>
+                                </button>
+                                @else 
+                                    <span class="border rounded text-xs p-1"><i class="fa fa-thumbs-up"></i>{{ $review->likes_count }}</span>
+                                @endauth
                               </div>                               
                           </div>
                       </div>
@@ -182,5 +190,27 @@
       </div>
   </div>
 </x-app-layout>
+
+<script type="text/javascript">
+    $(function() {
+        $('button.like').on('click', function(){
+            var review = $(this).data('id');
+            var likebtn = $(this);
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                url:"{{ route('like.store') }}",
+                type: 'POST',
+                data: {'review_id':review}
+            }).done(function(data){
+                likebtn.find('span').text(data);
+            })
+        })
+    });
+</script>
 
 
