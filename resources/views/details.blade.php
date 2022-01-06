@@ -207,8 +207,16 @@
                 type: 'POST',
                 data: {'review_id':review}
             }).done(function(data){
-                likebtn.find('span').text(data);
+                $.trim(likebtn.find('small').text()) == 'أعجبني' ? showUnLike(data) : showLike(data);
             })
+
+            function showUnLike(count) {
+                likebtn.html('<i class="fa fa-thumbs-down"></i><small>'+ إلغاء الإعجاب+ '</small> ' + count); 
+                : '<i class="fa fa-thumbs-up"></i><small>أعجبني</small> ')
+            } 
+            function showLike(count) {
+                likebtn.html('<i class="fa fa-thumbs-up"></i><small>'+ أعجبني+ '</small> ' + count);
+            }
         })
     });
 </script>
