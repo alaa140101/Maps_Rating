@@ -204,18 +204,17 @@
             });
             $.ajax({
                 url:"{{ route('like.store') }}",
-                type: 'POST',
-                data: {'review_id':review}
+                type:'POST',
+                data:{'review_id' : review}
             }).done(function(data){
                 $.trim(likebtn.find('small').text()) == 'أعجبني' ? showUnLike(data) : showLike(data);
-            })
+            });
 
             function showUnLike(count) {
-                likebtn.html('<i class="fa fa-thumbs-down"></i><small>'+ إلغاء الإعجاب+ '</small> ' + count); 
-                : '<i class="fa fa-thumbs-up"></i><small>أعجبني</small> ')
+                likebtn.html('<i class="fa fa-thumbs-down"></i><small>'+' إلغاء الإعجاب'+ '</small> ' + count); 
             } 
             function showLike(count) {
-                likebtn.html('<i class="fa fa-thumbs-up"></i><small>'+ أعجبني+ '</small> ' + count);
+                likebtn.html('<i class="fa fa-thumbs-up"></i><small>'+ 'أعجبني'+ '</small> ' + count);
             }
         })
     });
