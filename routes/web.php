@@ -35,7 +35,8 @@ Route::post('/search', [SearchController::class, 'show'])->name('search');
 Route::get('/{category:slug}', [CategoryController::class, 'show'])->name('category.show');
 
 Route::resource('report', ContactController::class, ['only' => ['create', 'store']]);
-// Route::resource('like', LikeController::class, ['only' => ['store']]);
+
+Route::get('/place/create', [PlaceController::class, 'create'])->name('place.create');
 
 Route::get('/', [PlaceController::class, 'index'])->name('home');
 
@@ -43,3 +44,4 @@ Route::get('/{place}/{slug}', [PlaceController::class, 'show'])->name('place.sho
 
 Route::post('review', [ReviewController::class, 'store'])->name('review.store');
 Route::post('like', [LikeController::class, 'store'])->name('like.store');
+
