@@ -49,10 +49,34 @@
 </x-app-layout>
 
 <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+<script src="https://unpkg.com/esri-leaflet@2.3.3/dist/esri-leaflet.js"></script>
+<script src="https://unpkg.com/esri-leaflet-geocoder@2.3.2/dist/esri-leaflet-geocoder.js"></script>
 <script type="text/javascript">
   var map = L.map('mapid');
 
   L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(map);
   
   map.locate({setView: true, maxZoom: 10});
+
+  map.on('locationfound', function(e) {
+    L.marker(e.latlng).addTo(map);
+  });
+
+  
+  map.on('locationerror', function(e) {
+    alert(e.message);
+  })
+
+  var geocodeService = L.esri.Geocoding.geocodeService();
+
+  map.on('mousedown', function(e) {
+    $('#latitude').val(e.latlng.lat);
+    $('#longitude').val(e.latlng.lng);
+    geocodeService.reverse().latlng(e.latlng).run(function(error, result) {
+      if (error) {
+        return;
+      }
+      L.marker(result.latlng).addTo(map).bindPopup(result.address.Match_addr).openPopup();
+    })
+  })
 </script>
