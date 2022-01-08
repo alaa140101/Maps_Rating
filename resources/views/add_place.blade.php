@@ -6,7 +6,7 @@
   <div class="container my-12 mx-auto md:px-12 p-5">
     <h1 class="text-2xl p-5 mb-2"></h1>
     <hr class="mb-5">
-    <form action="" class="form-contact" method="post" enctype="multipart/form-data">
+    <form action="{{ route('place.store') }}" class="form-contact" method="post" enctype="multipart/form-data">
     @csrf
     <div class="grid grid-cols-2 gap-4">
       <div class="">

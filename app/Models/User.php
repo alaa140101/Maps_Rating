@@ -73,4 +73,10 @@ class User extends Authenticatable
     {
         return $this->likes()->whereReview_id($review)->exists();
     }
+
+    public function places()
+    {
+        return $this->hasMany('App\Models\Place');
+    }
+
 }

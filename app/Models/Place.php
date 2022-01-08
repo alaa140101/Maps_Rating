@@ -4,10 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Helpers\Slug;
 
 class Place extends Model
 {
     use HasFactory;
+
+    protected $guarded = ['id', 'view_count'];
 
     public function getImageAttribute($image)
     {
@@ -35,5 +38,11 @@ class Place extends Model
     public function reviews()
     {
         return $this->hasMany('App\Models\Review');
+    }
+
+    public function setNameAttribute($value)
+    {
+        $this->attributes['name'] = $value;
+        $this->attributes['slug'] = Slug::uniqueSlug($value, 'places');
     }
 }
