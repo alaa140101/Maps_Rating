@@ -191,6 +191,7 @@
   </div>
 </x-app-layout>
 
+<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
 <script type="text/javascript">
     $(function() {
         $('button.like').on('click', function(){
@@ -218,6 +219,17 @@
             }
         })
     });
+
+    var longitude = $('#longitude').val();
+    var latitude = $('#latitude').val();
+
+    var map = L.map('mapid', {
+        center : [latitude, longitude],
+        zoom : 15
+    });
+
+    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(map);
+    L.marker([latitude, longitude]).bindPopup($('#name').val()).addTo(map).openPopup();
 </script>
 
 

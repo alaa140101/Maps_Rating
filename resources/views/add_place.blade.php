@@ -4,6 +4,11 @@
   </x-slot>
 
   <div class="container my-12 mx-auto md:px-12 p-5">
+    @if (session('success'))
+      <x-alert color="blue" message="{{ session('success') }}"/>
+    @elseif(session('fail'))
+      <x-alert color="red" message="{{ session('fail') }}"/>
+    @endif
     <h1 class="text-2xl p-5 mb-2"></h1>
     <hr class="mb-5">
     <form action="{{ route('place.store') }}" class="form-contact" method="post" enctype="multipart/form-data">

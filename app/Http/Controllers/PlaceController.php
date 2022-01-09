@@ -45,7 +45,7 @@ class PlaceController extends Controller
             $request->user()->places()->create($request->all());
         }
 
-        return back();
+        return redirect(url()->previous())->with('success', 'تم بنجاح إضافة موقع');
     }
 
     /**
