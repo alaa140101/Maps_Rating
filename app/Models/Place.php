@@ -45,4 +45,9 @@ class Place extends Model
         $this->attributes['name'] = $value;
         $this->attributes['slug'] = Slug::uniqueSlug($value, 'places');
     }
+
+    public function bookmarks()
+    {
+        return $this->belongsToMany('App\Models\Bookmark', 'bookmarks');
+    }
 }

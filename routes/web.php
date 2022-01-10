@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
+    BookmarkController,
     CategoryController,
     ContactController,
     PlaceController,
@@ -31,6 +32,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 Route::get('/search', [SearchController::class, 'autoComplete'])->name('auto-complete');
 Route::post('/search', [SearchController::class, 'show'])->name('search');
+
+Route::get('bookmark/{place_id}', [BookmarkController::class, 'bookmark'])->name('bookmark');
 
 Route::get('/{category:slug}', [CategoryController::class, 'show'])->name('category.show');
 

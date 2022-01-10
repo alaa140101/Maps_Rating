@@ -79,4 +79,9 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Place');
     }
 
+    public function bookmarks()
+    {
+        return $this->belongsToMany('App\Models\Place', 'bookmarks');
+    }
+
 }
