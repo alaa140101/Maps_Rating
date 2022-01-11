@@ -84,4 +84,9 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Models\Place', 'bookmarks');
     }
 
+    public function alreadyBookmarked($marked)
+    {
+        return $this->bookmarks()->wherePlace_id($marked)->exists();
+    }
+
 }

@@ -35,6 +35,8 @@ Route::post('/search', [SearchController::class, 'show'])->name('search');
 
 Route::get('bookmark/{place_id}', [BookmarkController::class, 'bookmark'])->name('bookmark');
 
+Route::get('bookmarks', [BookmarkController::class, 'getByUser'])->name('bookmarks');
+
 Route::get('/{category:slug}', [CategoryController::class, 'show'])->name('category.show');
 
 Route::resource('report', ContactController::class, ['only' => ['create', 'store']]);

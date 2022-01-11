@@ -24,6 +24,7 @@
               </div>
           </div>
 
+          @auth 
           <div class="bg-white shadow-lg rounded p-4 h-52">
               <div class="p-5 bg-white shadow-sm">
                   <h3>{{$place->user->name}}</h3>
@@ -34,16 +35,15 @@
               </div>
               <hr/>
               <div class="p-3">
-              
                   <a href="{{ route('bookmark', $place->id) }}" class="border border-teal-500 text-xs text-teal-500 hover:bg-teal-500 hover:text-gray-100 rounded ml-3 p-1">
-                      <span class=""><i class="fa fa-bookmark-o fa-lg"></i></span> علامة مرجعية 
+                      {!! Auth::user()->alreadyBookmarked($place->id) ? '<i class="fa fa-bookmark fa-lg"></i><small>الغاء علامة مرجعية</small> ' : '<i class="fa fa-bookmark-o fa-lg"></i><small>اضافة علامة مرجعية</small> ' !!}
                   </a>
                   <a href="{{ route('report.create') }}" class="border border-red-500 text-xs text-red-500 hover:bg-red-500 hover:text-gray-200 rounded p-1">
                       <span class=""><i class="fa fa-warning"></i></span>إبلاغ موقع مكرر 
                   </a>
-             
-              </div>
-          </div>
+                </div>
+            </div>
+            @endauth 
 
           <div class="bg-white col-span-2 shadow-lg rounded p-5 grid grid-cols-1 lg:grid-cols-3">
               <div class="text-center v_line">
@@ -109,7 +109,7 @@
                               <div class="mt-3">
                                 @auth
                                 <button id="like" data-id="{{$review->id}}" class="border rounded p-1 text-xs like" type="button">
-                                    {{!! Auth::user()->alreadyliked($review->id) ? '<i class="fa fa-thumbs-down"></i><small>إلغاء الإعجاب</small> ' : '<i class="fa fa-thumbs-up"></i><small>أعجبني</small> ' !!}}
+                                    {!! Auth::user()->alreadyliked($review->id) ? '<i class="fa fa-thumbs-down"></i><small>إلغاء الإعجاب</small> ' : '<i class="fa fa-thumbs-up"></i><small>أعجبني</small> ' !!}
                                     <span>{{ $review->likes_count }}</span>
                                 </button>
                                 @else 

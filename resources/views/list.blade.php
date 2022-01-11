@@ -32,8 +32,8 @@
           @endforeach
         </div>
       </div>
-      @endif
       <div id="mapid" style="height: 350px;"></div>
+      @endif
   </div>
 </x-app-layout>
 

@@ -50,4 +50,6 @@ class Place extends Model
     {
         return $this->belongsToMany('App\Models\Bookmark', 'bookmarks');
     }
+
+    
 }
