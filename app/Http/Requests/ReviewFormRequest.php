@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Foundation\Http\FormRequest;
 
 class ReviewFormRequest extends FormRequest
@@ -13,7 +14,7 @@ class ReviewFormRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return auth()->check();
     }
 
     /**
@@ -36,5 +37,10 @@ class ReviewFormRequest extends FormRequest
             'review.required' => 'حقل مراجعة فارغ',
             'review.min' =>'محتوى قصير جدا'
         ];
+    }
+
+    public function failedAuthorization()
+    {
+        throw new AuthorizationException('لاتمتلك صلاحية اضافة مراجعة، فضلا سجل دخولك للموقع اولا');
     }
 }
