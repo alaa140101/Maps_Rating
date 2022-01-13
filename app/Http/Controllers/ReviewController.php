@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Review;
 use Illuminate\Http\Request;
+use App\Http\Requests\ReviewFormRequest;
 
 class ReviewController extends Controller
 {
@@ -33,7 +34,7 @@ class ReviewController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ReviewFormRequest $request)
     {
         if($request->user()->reviews()->wherePlace_id($request->place_id)->exists()){
             return redirect(url()->previous().'#review-dev')->with('fail', 'لقد قيمت هذا المشروع مسبقا');

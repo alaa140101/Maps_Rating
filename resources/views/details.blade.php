@@ -182,6 +182,9 @@
                     <div class="form-group">
                         <textarea name="review" id="review" cols="30" rows="10" class="border w-full"></textarea>
                     </div>
+                    @error('review')
+                        <x-alert color="red" message="{{ $message }}" />
+                    @enderror
                     <input type="hidden" name="place_id" class="form-control" id="place_id" value="{{ $place->id }}">
                     <button type="submit" class="mt-3 bg-blue-600 text-gray-200 rounded hover:bg-blue-500 px-4 py-2 focus:outline-none">إرسال</button>
                 </div>              
@@ -208,7 +211,11 @@
                 type:'POST',
                 data:{'review_id' : review}
             }).done(function(data){
+                if (data) {
                 $.trim(likebtn.find('small').text()) == 'أعجبني' ? showUnLike(data) : showLike(data);
+                } else {
+                    alert('لايمكنك الاعجاب بهذه المراجعة');
+                }
             });
 
             function showUnLike(count) {

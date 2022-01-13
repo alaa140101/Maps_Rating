@@ -1,3 +1,3 @@
-<div class="bg-{{$color}}-200 relative text-{{$color}}-600 py-3 px-3 rounded-lg">
-    {{ $message }}
+<div class="bg-{{$color}}-100 border border-{{$color}}-400 text-{{$color}}-600 px-4 py-3 rounded relative" role="alert">
+    <span class="block sm:inline">{{ $message }}</span>    
 </div>
